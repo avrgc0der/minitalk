@@ -6,13 +6,11 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:50:44 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/01/26 19:32:20 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/01/26 21:05:02 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
-#include <unistd.h>
-#include <stdlib.h>
 #include <signal.h>
 
 void 	print_msg(int bit)
@@ -37,7 +35,7 @@ void	ascii_to_bit(int pid, char *message)
 			usleep(100);
 			bit--;
 		}
-		message++;
+		message++
 	}
 	bit = 7;
 	while (bit >= 0)

@@ -6,13 +6,12 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:50:41 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/01/26 15:51:49 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/01/26 21:04:54 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include "libft/libft.h"
-#include <unistd.h>
 
 void	sig_handler(int sig, siginfo_t *info, void *context)
 {
