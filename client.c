@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:50:44 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/01/21 20:46:47 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/01/26 19:32:20 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,30 @@ void 	print_msg(int bit)
 		ft_putstr_fd("The message has been received!\n", 1);
 }
 
-void ascii_to_bit(int pid, char c)
+void	ascii_to_bit(int pid, char *message)
 {
-	int bit;
+	int	bit;
 
-	bit = 0;
-	while (bit < 8)
+	while (*message != '\0')
 	{
-		if (c & (0x01 << bit))
-			kill(pid, SIGUSR1);
-		else
-			kill(pid, SIGUSR2);
-		usleep(800);
-		bit++;
+		bit = 7;
+		while (bit >= 0)
+		{
+			if ((*message >> bit) & 1)
+				kill(pid, SIGUSR1);
+			else
+				kill(pid, SIGUSR2);
+			usleep(100);
+			bit--;
+		}
+		message++;
+	}
+	bit = 7;
+	while (bit >= 0)
+	{
+		kill(pid, SIGUSR2);
+		usleep(100);
+		bit--;
 	}
 }
 
@@ -61,10 +72,8 @@ int args_check(int ac, char **av)
 
 int main(int ac, char **av)
 {
-	int i;
 	int pid;
-	
-	i = 0;
+
 	if (args_check(ac, av))
 		return (1);
 
@@ -75,13 +84,6 @@ int main(int ac, char **av)
 		return(1);
 	}
 	signal(SIGUSR2, print_msg);
-	while(av[2][i])
-	{
-		ascii_to_bit(pid, av[2][i]);
-		pause();
-		i++;
-	}
-	ascii_to_bit(pid, '\0');
-	pause();
+	ascii_to_bit(pid, av[2]);
 	return(0);
 }
