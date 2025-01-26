@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:50:44 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/01/26 21:05:02 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/01/26 21:28:01 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ascii_to_bit(int pid, char *message)
 			usleep(100);
 			bit--;
 		}
-		message++
+		message++;
 	}
 	bit = 7;
 	while (bit >= 0)
@@ -76,6 +76,11 @@ int main(int ac, char **av)
 		return (1);
 
 	pid = ft_atoi(av[1]);
+	if (pid <= 0)
+	{
+		ft_putstr_fd("ERROR: invalid PID.\n", 1);
+		return (1);
+	}
 	if(kill(pid, 0) == -1)
 	{
 		ft_putstr_fd("ERROR: invalid PID or server not running.\n", 1);
