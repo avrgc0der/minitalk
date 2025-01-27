@@ -5,7 +5,6 @@ SRCS_S = server.c
 OBJS_C = ${SRCS_C:.c=.o}
 OBJS_S = ${SRCS_S:.c=.o}
 
-CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LIBFT = libft/libft.a
 
@@ -28,5 +27,3 @@ fclean: clean
 	rm -f client server libft/libft.a
 
 re: fclean all
-
-.PHONY: all clean fclean re

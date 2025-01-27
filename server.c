@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
+/*   By: enoshahi <enoshahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:50:41 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/01/26 21:04:54 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/01/27 21:54:26 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sig_handler(int sig, siginfo_t *info, void *context)
 	(void)context;
 	num <<= 1;
 	if (sig == SIGUSR1)
-		num |= 0x01;
+		num |= 1;
 	bit++;
 	if (bit == 8)
 	{
@@ -37,6 +37,7 @@ int	main(int ac, char **av)
 {
 	int					pid;
 	struct sigaction	act;
+
 	(void)av;
 	if (ac != 1)
 	{
@@ -52,6 +53,6 @@ int	main(int ac, char **av)
 	sigaction(SIGUSR1, &act, NULL);
 	sigaction(SIGUSR2, &act, NULL);
 	while (1)
-		pause();
-	return(0);
+		pause ();
+	return (0);
 }
