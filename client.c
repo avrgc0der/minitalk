@@ -6,7 +6,7 @@
 /*   By: enoshahi < enoshahi@student.42abudhabi.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 16:50:44 by enoshahi          #+#    #+#             */
-/*   Updated: 2025/01/26 21:28:01 by enoshahi         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:28:22 by enoshahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ascii_to_bit(int pid, char *message)
 				kill(pid, SIGUSR1);
 			else
 				kill(pid, SIGUSR2);
-			usleep(100);
+			usleep(1000);
 			bit--;
 		}
 		message++;
@@ -41,7 +41,7 @@ void	ascii_to_bit(int pid, char *message)
 	while (bit >= 0)
 	{
 		kill(pid, SIGUSR2);
-		usleep(100);
+		usleep(1000);
 		bit--;
 	}
 }
